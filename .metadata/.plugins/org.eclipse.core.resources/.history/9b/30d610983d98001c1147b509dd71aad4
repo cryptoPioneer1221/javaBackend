@@ -1,0 +1,8 @@
+package com.example.demo;
+
+public class CRUDService {	
+	public String createCRUD(CRUD crud) {
+		return"";
+	}
+
+}

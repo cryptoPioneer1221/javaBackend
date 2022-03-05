@@ -1,0 +1,16 @@
+package com.Springboot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringbootLoginApplication {
+
+	public static void main(String[] args) {
+		ClassLoader classLoader=CRUDRunner.class.getClassLoader();
+		File file=new File(classLoader.getResources())
+		SpringApplication.run(SpringbootLoginApplication.class, args);
+		
+	}
+
+}

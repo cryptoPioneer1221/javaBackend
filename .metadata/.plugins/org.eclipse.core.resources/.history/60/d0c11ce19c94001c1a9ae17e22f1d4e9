@@ -1,0 +1,5 @@
+package com.Spring.Login.models;
+
+public enum ERole {
+
+}

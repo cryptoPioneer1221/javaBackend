@@ -1,0 +1,3 @@
+spring.datasource.platform=firebase
+ spring.datasource.url=jdbc:https://homepage-cd0e5-default-rtdb.firebaseio.com
+

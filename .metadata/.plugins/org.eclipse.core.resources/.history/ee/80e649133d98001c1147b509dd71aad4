@@ -1,0 +1,12 @@
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CRUDController{
+	public CRUDService crudService;
+	public CRUDController(CRUDService crudService) {
+		this.crudService=crudService	
+				}
+	
+}

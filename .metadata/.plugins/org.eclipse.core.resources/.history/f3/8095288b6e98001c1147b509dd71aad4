@@ -1,0 +1,40 @@
+package com.Springboot;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+public class registrationcontroller {
+@Autowired
+	private RegistrationService service;
+	
+	@PostMapping("/registerUser")
+	public CRUD registerUser(@RequestBody CRUD User) throws Exception {
+		String tempEmailId=User.getEmailid();
+		if(tempEmailId!=null && !"".equals(tempEmailId) ) {
+			CRUD userobj = service.fetchUserByEmailId(tempEmailId);
+			if(userobj!=null) {
+				throw new Exception("user with"+tempEmailId+" is already exist");
+			}
+		}
+		CRUD userObj=null;
+		userObj=service.saveUser(User);
+		return userObj;
+	}
+@PostMapping("/login")
+	public CRUD loginUser(@RequestBody CRUD User) throws Exception {
+
+		String tempEmailId=User.getEmailid();
+		String tempPass=User.getPassword();
+		CRUD userObj=null;
+		if(tempEmailId!=null && tempPass !=null) {
+			userObj=service.fetchUserByEmailIdAndPassword(tempEmailId,tempPass);
+		}
+		if(userObj==null) {
+			throw new Exception("Bad credentials");
+		}
+		return userObj;
+	}
+
+}

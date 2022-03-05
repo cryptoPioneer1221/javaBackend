@@ -1,0 +1,4 @@
+	spring.datasource.url=jdbc:homepage-cd0e5-default-rtdb.firebaseio.com
+	spring.datasource.driver=com.firestore.jdbc.Driver
+
+logging.level.org.hibernate.SQL=debug

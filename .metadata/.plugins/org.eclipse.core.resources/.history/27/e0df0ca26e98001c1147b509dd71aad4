@@ -1,0 +1,23 @@
+package com.Springboot;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.Springboot.CRUDService;
+
+
+@Service
+public class RegistrationService {
+	@Autowired
+	private CRUDService repo;
+	public CRUD saveUser (CRUD User) {
+		return repo.saveUser(User);
+	}
+	public CRUD fetchUserByEmailId(String email) {
+		return repo.fetchUserByEmailId(email);
+	}
+	public CRUD fetchUserByEmailIdAndPassword(String email,String password) {
+		return repo.fetchUserByEmailIdAndPassword(email,password);
+	}
+}
+
+

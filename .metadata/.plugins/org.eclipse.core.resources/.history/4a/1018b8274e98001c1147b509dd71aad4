@@ -1,0 +1,39 @@
+package com.example.demo;
+
+import java.util.concurrent.ExecutionException;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Springboot.user;
+
+@RestController
+public class CRUDController{
+	public CRUDService crudService;
+	public CRUDController(CRUDService crudService) {
+		this.crudService=crudService;	
+				}
+
+	@PostMapping("/register")
+	public String getCRUD(@RequestBody CRUD crud) throws InterruptedException,ExecutionException{
+		return crudService.createCRUD(crud);
+		String tempEmailId=crud.getEmailid();
+		if(tempEmailId!=null && !"".equals(tempEmailId) ) {
+		CRUD userobj = crudService.fetchByEmailid()
+			if(userobj!=null) {
+				throw new Exception("user with"+tempEmailId+" is already exist");
+			}
+		}
+		user userObj=null;
+		userObj=CRUDService.save(crud);
+		return userObj;
+	}
+	}
+	@PutMapping("/delete")
+	public String deleteCRUD(@RequestBody String id) throws InterruptedException,ExecutionException{
+		return crudService.deleteCRUD(id);
+	}
+	
+}

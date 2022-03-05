@@ -1,0 +1,37 @@
+package com.example.demo;
+
+import java.util.concurrent.ExecutionException;
+
+import org.springframework.stereotype.Service;
+import com.google.cloud.firestore.WriteResult;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.cloud.FirestoreClient;
+
+@Service
+public class CRUDService {	
+	public String createCRUD(CRUD crud) throws ExecutionException,InterruptedException{
+		Firestore dbFirestore=FirestoreClient.getFirestore();
+		ApiFuture<WriteResult> collectionsApiFuture=dbFirestore.collection("crud_user").document(crud.getId()).set(crud);
+		return "user registered successfully"+collectionsApiFuture.get().getUpdateTime().toString();
+		
+	}
+	public String loginCRUD(String crud) throws ExecutionException,InterruptedException{
+		Firestore dbFirestore=FirestoreClient.getFirestore();
+		@SuppressWarnings("unused")
+		ApiFuture<WriteResult>writeResult=dbFirestore.collection("crud_user").document(crud.getId()).set(crud);
+
+		String tempEmailId=dbFirestore.getEmailid();
+		String tempPass=User.getPassword();
+		user userObj=null;
+		if(tempEmailId!=null && tempPass !=nul
+			userObj=crudService.fetchUserByEmailIdAndPassword(tempEmailId,tempPass);
+		}
+		if(userObj==null) {
+			throw new Exception("Bad credentials");
+		}
+		return userObj;
+	}
+}
+	}
+}

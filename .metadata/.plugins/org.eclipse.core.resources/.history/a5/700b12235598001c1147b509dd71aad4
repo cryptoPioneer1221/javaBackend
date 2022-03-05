@@ -1,0 +1,5 @@
+package com.example.demo;
+import org.springframework.data.crud.repository.CrudRepository;
+public interface userrepository  extends CrudRepository<CRUD,Integer>{
+
+}

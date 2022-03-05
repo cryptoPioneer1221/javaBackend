@@ -1,0 +1,12 @@
+package com.Springboot;
+
+import com.Springboot.user;
+
+	
+
+	public interface RegistrationRepository extends JpaRepository<User,Integer>{
+	public user findByEmailId(String emailId);
+	public user findByEmailIdAndPassword(String emailId,String password);
+	}
+
+}

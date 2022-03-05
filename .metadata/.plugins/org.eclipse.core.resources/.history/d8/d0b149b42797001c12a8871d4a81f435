@@ -1,0 +1,3 @@
+
+  spring.datasource.url="https://homepage-cd0e5-default-rtdb.firebaseio.com"
+

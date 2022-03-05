@@ -1,0 +1,26 @@
+package com.example.demo;
+
+import java.util.concurrent.ExecutionException;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CRUDController{
+	public CRUDService crudService;
+	public CRUDController(CRUDService crudService) {
+		this.crudService=crudService;	
+				}
+
+	@PostMapping("/create")
+	public String getCRUD(@RequestBody CRUD crud) throws InterruptedException,ExecutionException{
+		return crudService.createCRUD(crud);
+	}
+	@PutMapping("/delete")
+	public String deleteCRUD(@RequestBody String id) throws InterruptedException,ExecutionException{
+		return crudService.deleteCRUD(id);
+	}
+	
+}

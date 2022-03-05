@@ -1,0 +1,24 @@
+package com.Springboot;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.Springboot.user;
+import com.Springboot.RegistrationService;
+
+
+@Service
+public class RegistrationService {
+	@Autowired
+	private RegistrationService repo;
+	public user saveUser (user User) {
+		return repo.save(User);
+	}
+	public User fetchUserByEmailId(String email) {
+		return repo.findByEmailId(email);
+	}
+	public User fetchUserByEmailIdAndPassword(String email,String password) {
+		return repo.findByEmailIdAndPassword(email,password);
+	}
+}
+
+
